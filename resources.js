@@ -1,4 +1,4 @@
-export const hashtags = [
+const hashtags = [
   "travel",
   "boy",
   "girl",
@@ -31,3 +31,7 @@ export const hashtags = [
   "mouse",
   "one"
 ];
+
+module.exports = {
+  hashtags
+};
