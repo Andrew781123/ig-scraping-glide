@@ -3,15 +3,16 @@ const InstaClient = new Insta();
 const fs = require("fs");
 require("./ig-auth")(InstaClient);
 const { hashtags } = require("./resources");
+const randomWords = require("random-words");
 
 //get details of provided hashtag
-InstaClient.getHashtag("travel").then(data => {
-  console.log(`number of featured posts: ${data.featuredPosts.length}`);
-  console.log(`number of last posts: ${data.lastPosts.length}`);
+// InstaClient.getHashtag("travel").then(data => {
+//   console.log(`number of featured posts: ${data.featuredPosts.length}`);
+//   console.log(`number of last posts: ${data.lastPosts.length}`);
 
-  //dataJson = JSON.stringify(data);
-  //fs.writeFile("result.json", dataJson, "utf8", err => console.log(err));
-});
+//   //dataJson = JSON.stringify(data);
+//   //fs.writeFile("result.json", dataJson, "utf8", err => console.log(err));
+// });
 
 //get similar hashtags and their number of posts
 // InstaClient.searchHashtag("travel").then(result => {
@@ -29,3 +30,30 @@ InstaClient.getHashtag("travel").then(data => {
 //     })
 //     .catch(err => console.log(err));
 // }
+
+const callAPI = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("api response");
+    }, 2000);
+  });
+};
+
+let numberOfSuccessfulAPICall = 0;
+for (const hashtag of randomWords(50)) {
+  //random number from 1 - 2
+  const randomTime = Math.random() * 6 + 5;
+
+  setTimeout(() => {
+    console.log(`finding hashtag: ${hashtag}`);
+
+    InstaClient.getHashtag(hashtag).then(result => {
+      console.log("respose");
+      numberOfSuccessfulAPICall++;
+    });
+  }, randomTime * 1000);
+}
+
+setTimeout(() => {
+  console.log(numberOfSuccessfulAPICall);
+}, 20 * 1000);
