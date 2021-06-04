@@ -22,10 +22,15 @@ InstaClient.getHashtag("travel").then(data => {
 // });
 
 //testing limit **NOT IDEAL**
-// for (let i = 0; i < hashtags.length; i++) {
-//   InstaClient.getHashtag("travel")
-//     .then(result => {
-//       console.log(`number: ${i + 1} done`);
-//     })
-//     .catch(err => console.log(err));
-// }
+/*
+ for (let i = 0; i < hashtags.length; i++) {
+   InstaClient.getHashtag("travel")
+     .then(result => {
+       console.log(`number: ${i + 1} done`);
+     })
+     .catch(err => console.log(err));
+ }*/
+ 
+
+
+  
