@@ -1,0 +1,12 @@
+{
+  "name": "ig-scrape-glide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Andrew781123/ig-scraping-glide.git",
+  "author": "Andrew781123 <leechihoandrew1123@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "scraper-instagram": "^1.0.17"
+  }
+}
