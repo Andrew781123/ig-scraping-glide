@@ -4,6 +4,7 @@ const fs = require("fs");
 require("./ig-auth")(InstaClient);
 const { hashtags } = require("./resources");
 const randomWords = require("random-words");
+const { generateRandomHashtags } = require("./utils");
 
 //get details of provided hashtag
 // InstaClient.getHashtag("travel").then(data => {
@@ -40,17 +41,22 @@ const callAPI = () => {
 };
 
 let numberOfSuccessfulAPICall = 0;
-for (const hashtag of randomWords(50)) {
-  //random number from 1 - 2
+
+const uniqueHashtags = generateRandomHashtags(100);
+
+for (const hashtag of uniqueHashtags) {
+  //random number from 5 - 11
   const randomTime = Math.random() * 6 + 5;
 
   setTimeout(() => {
     console.log(`finding hashtag: ${hashtag}`);
 
-    InstaClient.getHashtag(hashtag).then(result => {
-      console.log("respose");
-      numberOfSuccessfulAPICall++;
-    });
+    InstaClient.getHashtag(hashtag)
+      .then(result => {
+        console.log("respose");
+        numberOfSuccessfulAPICall++;
+      })
+      .catch(err => console.log(err));
   }, randomTime * 1000);
 }
 
